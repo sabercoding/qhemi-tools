@@ -4,19 +4,21 @@ const { availableLocales, locale } = useI18n();
 const localesLong: Record<string, string> = {
   zh: '中文',
   en: 'English',
-  es: 'Español',
-  fr: 'Français',
-  pt: 'Português',
-  ru: 'Русский',
-  uk: 'Українська',
-  vi: 'Tiếng Việt',
+  // es: 'Español',
+  // fr: 'Français',
+  // pt: 'Português',
+  // ru: 'Русский',
+  // uk: 'Українська',
+  // vi: 'Tiếng Việt',
 };
 
 const localeOptions = computed(() =>
-  availableLocales.map(locale => ({
-    label: localesLong[locale] ?? locale,
-    value: locale,
-  })),
+    Object.keys(localesLong)
+        .filter(locale => (availableLocales as string[]).includes(locale))
+        .map(locale => ({
+          label: localesLong[locale],
+          value: locale,
+        })),
 );
 </script>
 
